@@ -1,5 +1,8 @@
 # HUST-ML-kNN
-implement kNN in C++ for HUST Machine Learn course
+
+CS1807 Chenhui Mo, Implementation of the Machine Learning course of Huazhong University of Science and Technology
+
+All in C++, Python refused
 
 # Release 1.0:
 
@@ -24,3 +27,4 @@ for example: [belongs, x1, x2, x3, x4, ..., xn]
 You can download the file named kNN.h and include it into your project. Initialize it as a global variable because it uses a buffer to read data, which occupies 2^20 byte so you will get a stackoverflow.
 
 Then call kNN::Work to run the main function. in it, you should input the path of the dataset and the path of the testset. After that, you may leave for a cup of coffee.
+
