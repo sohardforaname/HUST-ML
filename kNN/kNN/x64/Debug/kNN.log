@@ -1,9 +1,0 @@
-﻿cl : 命令行 warning D9025: 正在重写“/sdl”(用“/GS-”)
-  kNN.cpp
-D:\code\vs\code\kNN\kNN\kNN.cpp(154,43): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
-  main.cpp
-  matrix.cpp
-  reader.cpp
-D:\code\vs\code\kNN\kNN\reader.cpp(9,42): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-  正在生成代码...
-  kNN.vcxproj -> D:\code\vs\code\kNN\x64\Debug\kNN.exe
