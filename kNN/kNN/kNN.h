@@ -4,6 +4,7 @@
 #include <utility>
 #include <algorithm>
 #include <queue>
+#include <ctime>
 
 #include "reader.h"
 #include "matrix.h"

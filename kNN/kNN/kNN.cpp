@@ -160,19 +160,27 @@ bool kNN::Work()
 		return printf("There will be something that can not be classified\n"), false;
 
 	char path[105];
+
+	clock_t st = clock();
 	scanf("%s", path);
 	if (!ReadDataSet(path))
 		return printf("Can not open dataset\n"), false;
 	printf("Read dataset OK!\n");
+	clock_t en = clock();
+	printf("Time: %d ms\n", en - st);
 
+	st = clock();
 	scanf("%s", path);
 	if (!ReadTestSet(path))
 		return printf("Can not open testset\n"), false;
 	printf("Read testset OK!\n");
+	en = clock();
+	printf("Time: %d ms\n", en - st);
 
 	int time = testSetSize / batchSize;
 	int* testPtr = testSetClass, * checkerPtr;
 
+	st = clock();
 	for (int i = 0; i < time; ++i)
 	{
 		CalculateBatch(i);
@@ -181,7 +189,9 @@ bool kNN::Work()
 		for (int j = 0; j < batchSize; ++j)
 			if (*(checkerPtr++) == *(testPtr++))
 				++accuracy;
+		en = clock();
 		printf("finish batch: %d, acc: %.6f\n", i + 1, (double)accuracy / ((i + 1) * batchSize));
+		printf("Time: per graph %d ms\n", (en - st) / ((i + 1) * batchSize));
 	}
 
 	return printf("finist classified\n"), true;
