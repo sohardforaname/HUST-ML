@@ -20,6 +20,7 @@ private:
 	int dimension, testSetSize, dataSetSize, batchSize;
 	int k, totalClass;
     int accuracy;
+	int* errorMatrix;
 
 	Reader* dataSetReader, * TestSetReader;
 

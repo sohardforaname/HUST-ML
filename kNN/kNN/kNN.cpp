@@ -11,6 +11,7 @@ kNN::~kNN()
 	delete[]dist;
 	delete[]classContainer;
 	delete[]classChecker;
+	delete[]errorMatrix;
 }
 
 kNN::kNN(int _dimension, int _dataSetSize, int _testSetSize, int  _batchSize, int _totalClass, int _k)
@@ -34,6 +35,9 @@ kNN::kNN(int _dimension, int _dataSetSize, int _testSetSize, int  _batchSize, in
 	matrix.bufferA = new int[dimension << 2];
 	matrix.bufferB = new int[dimension << 2];
 	matrix.bufferC = new int[16];
+
+	errorMatrix = new int[totalClass * totalClass];
+	memset(errorMatrix, 0, sizeof(int) * totalClass * totalClass);
 }
 
 bool kNN::ReadDataSet(const char* DataSetPath)
@@ -161,16 +165,18 @@ bool kNN::Work()
 
 	char path[105];
 
-	clock_t st = clock();
+	printf("Input dataset path.\n");
 	scanf("%s", path);
+	clock_t st = clock();
 	if (!ReadDataSet(path))
 		return printf("Can not open dataset\n"), false;
 	printf("Read dataset OK!\n");
 	clock_t en = clock();
 	printf("Time: %d ms\n", en - st);
 
-	st = clock();
+	printf("Input testset path.\n");
 	scanf("%s", path);
+	st = clock();
 	if (!ReadTestSet(path))
 		return printf("Can not open testset\n"), false;
 	printf("Read testset OK!\n");
@@ -187,12 +193,18 @@ bool kNN::Work()
 		Classify();
 		checkerPtr = classChecker;
 		for (int j = 0; j < batchSize; ++j)
+		{
+			++errorMatrix[*checkerPtr * totalClass + *testPtr];
 			if (*(checkerPtr++) == *(testPtr++))
 				++accuracy;
+		}
 		en = clock();
 		printf("finish batch: %d, acc: %.6f\n", i + 1, (double)accuracy / ((i + 1) * batchSize));
 		printf("Time: per graph %d ms\n", (en - st) / ((i + 1) * batchSize));
 	}
-
+	printf("Classfy result:\n%-10s%-10s%-10s\n", "Result", "True", "Count");
+	for (int i = 0; i < totalClass; ++i)
+		for (int j = 0; j < totalClass; ++j)
+			printf("%-10d%-10d%-10d\n", i, j, errorMatrix[i * totalClass + j]);
 	return printf("finist classified\n"), true;
 }
