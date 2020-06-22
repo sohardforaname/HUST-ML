@@ -1,4 +1,0 @@
-﻿  Reader.cpp
-D:\code\vs\C++_code\ML\bmpReader\Reader.cpp(104,21): warning C4018: “<”: 有符号/无符号不匹配
-D:\code\vs\C++_code\ML\bmpReader\Reader.cpp(141,21): warning C4018: “<”: 有符号/无符号不匹配
-  bmpReader.vcxproj -> D:\code\vs\C++_code\ML\bmpReader\Debug\bmpReader.exe
