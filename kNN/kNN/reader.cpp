@@ -2,6 +2,11 @@
 
 Reader::Reader() {}
 
+Reader::~Reader()
+{
+    delete[]buf;
+}
+
 char Reader::gc()
 {
     if (fh == ft)
@@ -14,6 +19,7 @@ char Reader::gc()
 
 void Reader::init(FILE* _fp)
 {
+    buf = new char[1 << 20];
     fp = _fp;
     memset(buf, 0, sizeof(buf));
     fh = ft = NULL;

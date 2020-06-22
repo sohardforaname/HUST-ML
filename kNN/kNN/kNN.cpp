@@ -158,26 +158,20 @@ void kNN::Classify()
 			classContainer + (i + 1) * totalClass) - (classContainer + (i * totalClass));
 }
 
-bool kNN::Work()
+bool kNN::Work(const char* dataSetPath, const char* testSetPath)
 {
-	if (testSetSize % batchSize)
+	if (testSetSize % batchSize || dimension % 4 || dataSetSize % 4)
 		return printf("There will be something that can not be classified\n"), false;
 
-	char path[105];
-
-	printf("Input dataset path.\n");
-	scanf("%s", path);
 	clock_t st = clock();
-	if (!ReadDataSet(path))
+	if (!ReadDataSet(dataSetPath))
 		return printf("Can not open dataset\n"), false;
 	printf("Read dataset OK!\n");
 	clock_t en = clock();
 	printf("Time: %d ms\n", en - st);
 
-	printf("Input testset path.\n");
-	scanf("%s", path);
 	st = clock();
-	if (!ReadTestSet(path))
+	if (!ReadTestSet(testSetPath))
 		return printf("Can not open testset\n"), false;
 	printf("Read testset OK!\n");
 	en = clock();
@@ -206,5 +200,5 @@ bool kNN::Work()
 	for (int i = 0; i < totalClass; ++i)
 		for (int j = 0; j < totalClass; ++j)
 			printf("%-10d%-10d%-10d\n", i, j, errorMatrix[i * totalClass + j]);
-	return printf("finist classified\n"), true;
+	return printf("finish classified\n"), true;
 }

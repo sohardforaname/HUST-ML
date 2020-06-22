@@ -36,8 +36,8 @@ private:
 	void Classify();
 
 public:
-    kNN(int _dimension, int _dataSetSize, int _testSetSize, int  _batchSize, int _totalClass, int _k);
-	bool Work();
+	kNN(int _dimension, int _dataSetSize, int _testSetSize, int  _batchSize, int _totalClass, int _k);
+	bool Work(const char* dataSetPath, const char* testSetPath);
 	~kNN();
 
 };
