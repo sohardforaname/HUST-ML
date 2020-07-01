@@ -21,10 +21,23 @@ private:
 	int k, totalClass;
     int accuracy;
 	int* errorMatrix;
+	int* distMemory, * distMemoryPtr;
+
+	bool use256;
+	int disFuncTag;
 
 	Reader* dataSetReader, * TestSetReader;
 
 	Matrix matrix;
+
+	void ( Matrix::*disFuncTable[6] )( int* a, int* b, int* c, int len ) =
+	{
+		&Matrix::CalMatrix4Mul4L1, &Matrix::CalMatrix4Mul4L1_256,
+		&Matrix::CalMatrix4Mul4L2, &Matrix::CalMatrix4Mul4L2_256,
+		&Matrix::CalMatrix4Mul4Ln, &Matrix::CalMatrix4Mul4Ln_256
+	};
+
+	void ( Matrix::* usedDisFunc )( int* a, int* b, int* c, int len );
  
 private:
 	kNN() = delete;
@@ -36,8 +49,9 @@ private:
 	void Classify();
 
 public:
-	kNN(int _dimension, int _dataSetSize, int _testSetSize, int  _batchSize, int _totalClass, int _k);
-	bool Work(const char* dataSetPath, const char* testSetPath);
+	kNN(int _dimension, int _dataSetSize, int _testSetSize, int  _batchSize, 
+		int _totalClass, int _k, bool _use256, int _disfuncTag);
+	bool Work(const char* dataSetPath, const char* testSetPath, FILE* outFilePtr, bool CompleteInfo);
 	~kNN();
 
 };
