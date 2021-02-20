@@ -148,6 +148,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <Optimization>MaxSpeed</Optimization>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,15 +158,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="kNN.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="matrix.cpp" />
-    <ClCompile Include="reader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kNN.h" />
-    <ClInclude Include="matrix.h" />
-    <ClInclude Include="reader.h" />
+    <ClInclude Include="kNN.hpp" />
+    <ClInclude Include="matrix.hpp" />
+    <ClInclude Include="reader.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

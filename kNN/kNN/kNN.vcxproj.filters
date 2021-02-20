@@ -15,27 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="kNN.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="reader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="matrix.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kNN.h">
+    <ClInclude Include="kNN.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="reader.h">
+    <ClInclude Include="matrix.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="matrix.h">
+    <ClInclude Include="reader.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
