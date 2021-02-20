@@ -7,4 +7,3 @@ int main()
     knn.Work("D:\\1.txt", "D:\\2.txt", NULL, 0);
     return 0;
 }
-

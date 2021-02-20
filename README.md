@@ -12,6 +12,6 @@ Lab2 is in director NaiveBayes, it is an implement of NaiveBayes in C++.
 
 Supports setting features, appending data by batch, calculating probability automatically and predicting by batch batch.
 
-Design is too complex for me to implement as it uses neural networks for feature extraction and some graph algorithms. So uses python and dlib.But kNN class is also used for classfy the face.
+Design is too complex for me to implement as it uses neural networks for feature extraction and some graph algorithms. So uses python and dlib. But kNN class is also used for classfy the face.
 
 Design supports appending a face and real time face recognition.
